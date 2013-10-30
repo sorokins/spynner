@@ -545,10 +545,10 @@ class Browser(object):
         return url
 
     def apply_ssl(self, request):
-        if self.ssl_protocol:
-            if self.sslconf.protocol() != self.ssl_protocol:
-                self.sslconf.setProtocol(self.ssl_protocol)
-                QSslConfiguration.setDefaultConfiguration(self.sslconf)
+        # if self.ssl_protocol:  # is always False
+        if self.sslconf.protocol() != self.ssl_protocol:
+            self.sslconf.setProtocol(self.ssl_protocol)
+            QSslConfiguration.setDefaultConfiguration(self.sslconf)
         request.setSslConfiguration(self.sslconf)
         return request
 
